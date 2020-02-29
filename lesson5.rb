@@ -20,7 +20,8 @@ names.map {|index| names_hash[index] = index.size}
 
 #using the hash, get the longest name (this can be done without if using hash and array
 #methods, use the links from the previous slide)
-longest_name = names_hash.keys.sort{|a,b| a.size <=> b.size}.reverse!.first
+longest_name = names_hash.keys.max_by{|name| name.size}
+
 puts "The longest name is: #{longest_name}"
 
 #find the index of that name in the array (the long one)
