@@ -59,7 +59,7 @@ end
 # use it with the get_name_and_call method. No exact
 # indications this time. Be creative.
 
-greet_proc = proc do |name|
+name_stats_proc = proc do |name|
 
 	#name should begin with capital letter
 	name.capitalize!
@@ -101,4 +101,4 @@ def get_name_and_call(some_proc)
 	some_proc.call(name)
 end
 
-get_name_and_call(greet_proc)
+get_name_and_call(name_stats_proc)
