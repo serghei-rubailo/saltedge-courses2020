@@ -14,9 +14,3 @@ class Card
     @suit  = suit
   end
 end
-
-my_card = Card.new(point: 5, suit: :diamonds)
-
-my_card.point
-my_card.suit
-another_card = Card.new(point: 10, suit: :spades)

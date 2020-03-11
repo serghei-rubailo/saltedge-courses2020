@@ -20,11 +20,9 @@ class Deck
   def shuffle!
     @cards.shuffle!
   end
-end
 
-deck = Deck.new
-deck.shuffle!
-deck.draw
-deck.shuffle!
-puts deck.draw
-puts deck.cards_count
+  def return_card(card)
+    @cards.unshift(card)
+  end
+
+end
