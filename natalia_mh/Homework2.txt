@@ -1,0 +1,7 @@
+tty
+#output of tty: /dev/pts/1
+
+crontab -e
+
+*/5 * * * * echo "I'm annoying script" > /dev/pts/1
+

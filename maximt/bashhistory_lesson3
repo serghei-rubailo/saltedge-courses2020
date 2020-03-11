@@ -1,0 +1,134 @@
+6412  git -version
+ 6413  git --version
+ 6414  ls
+ 6415  git init
+ 6416  git status
+ 6417  touch file.txt
+ 6418  git status
+ 6419  git add file.txt
+ 6420  git status
+ 6421  git commit -m "my first commit"
+ 6422  git config --global edit
+ 6423  git config --global --edit
+ 6424  git status
+ 6425  ls
+ 6426  subl file.txt
+ 6427  open file.txt
+ 6428  git status
+ 6429  git diff
+ 6430  git add file.txt
+ 6431  git status
+ 6432  git commit
+ 6433  git status
+ 6434  $EDITOR=nano
+ 6435  EXPORT EDITOR=nano
+ 6436  echo $EDITOR
+ 6437  $EDITOR="nano"
+ 6438  export EDITOR="nano"
+ 6439  echo $EDITOR
+ 6440  git status
+ 6441  nano file.txt
+ 6442  git status
+ 6443  git diff
+ 6444  rm file.txt
+ 6445  git status
+ 6446  ls
+ 6447  git status
+ 6448  git restore file.txt
+ 6449  git status
+ 6450  ls
+ 6451  git log
+ 6452  touch file2
+ 6453  git status
+ 6454  git add file2
+ 6455  git status
+ 6456  git commit -m "file2 created"
+ 6457  git status
+ 6458  nano file2
+ 6459  git status
+ 6460  git add file2
+ 6461  git commit -m "updated file2"
+ 6462  mkdir test
+ 6463  git status
+ 6464  rmdir test
+ 6465  git status
+ 6466  ls
+ 6467  rm file2
+ 6468  git status
+ 6469  git add file2
+ 6470  git status
+ 6471  git commit -m "removed file2"
+ 6472  git status
+ 6473  git log
+ 6474  git status
+ 6475  git log
+ 6476  ls
+ 6477  git log
+ 6478  git checkout 33ba0e3d79743d7c4c76d56eceaee61fbb9c2ac6
+ 6479  ls
+ 6480  vim file.txt
+ 6481  cat file.txt
+ 6482  git checkout master
+ 6483  cat file.txt
+ 6484  git checkout -b branch1
+ 6485  git log
+ 6486  ls
+ 6487  touchy file213
+ 6488  touch file213
+ 6489  git add .
+ 6490  git status
+ 6491  git commit -m "another usefull commit"
+ 6492  git log
+ 6493  git checkout master
+ 6494  git log
+ 6495  ls
+ 6496  git merge branch1
+ 6497  ls
+ 6498  gst
+ 6499  cd ..
+ 6500  ls
+ 6501  git clone https://github.com/mtkachenk0/saltedge-courses2020
+ 6502  cd saltedge-courses2020
+ 6503  git status
+ 6504  git remote -v
+ 6505  git remote rename origin main
+ 6506  git remote -v
+ 6507  git remote add origin https://github.com/mtkachenk0/saltedge-courses2020.git
+ 6508  git remote -v
+ 6509  git remote remove origin
+ 6510  git remote
+ 6511  git remote  -v
+ 6512  git remote add origin https://github.com/olejok/saltedge-courses2020.git
+ 6513  git remote -v
+ 6514  git push origin master
+ 6515  git checkout -b lesson3
+ 6516  git log
+ 6517  touch testfile
+ 6518  git add testfile
+ 6519  git commit -m "added testfile"
+ 6520  git status
+ 6521  git push origin master
+ 6522  git push main master
+ 6523  git status
+ 6524  git pull origin master
+ 6525  git pull main master
+ 6526  ls
+ 6527  ls -lah
+ 6528  git pull main master
+ 6529  ls
+ 6530  mkdir maximt
+ 6531  ls
+ 6532  cd maximt
+ 6533  mkdir lesson3
+ 6534  ls
+ 6535  touch lesson3/filedsadas
+ 6536  gst
+ 6537  git status
+ 6538  cd ..
+ 6539  git status
+ 6540  git add --all
+ 6541  git status
+ 6542  git commit -m "test message"
+ 6543  git status
+ 6544  git checkout master
+ 6545  git pull main master
