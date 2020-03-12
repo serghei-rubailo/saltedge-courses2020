@@ -6,8 +6,8 @@ players = [Person.new('John', 'john@test.rs', '777-7777-777'), Person.new('Mike'
 players[0].greet(players[1])
 players[1].greet(players[0])
 
-first_player = players.sample
-second_player = players.reject {|p| p == first_player}.first
+# randomly select who will be the first and second player
+first_player, second_player = players.shuffle
 
 puts "#{first_player.name} makes first move."
 
