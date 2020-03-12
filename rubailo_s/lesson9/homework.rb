@@ -21,30 +21,32 @@ while deck.cards_count > 0 do
 	puts "#{first_player.name} gets #{first_player_card.point} #{first_player_card.suit}"
 	puts "#{second_player.name} gets #{second_player_card.point} #{second_player_card.suit}"
 
-	if first_player_card.point < second_player_card.point
-		second_player.hand.add_card(first_player_card)
-		second_player.hand.add_card(second_player_card)
-		puts "#{second_player.name} takes cards!"
-	elsif first_player_card.point > second_player_card.point	
-		first_player.hand.add_card(first_player_card)
-		first_player.hand.add_card(second_player_card)
-		puts "#{first_player.name} takes cards!"
+	round_winner = if first_player_card.point > second_player_card.point
+		first_player
+	elsif first_player_card.point < second_player_card.point
+		second_player
+	end
+
+	if round_winner
+		round_winner.hand.add_cards(first_player_card,second_player_card)
+		puts "#{round_winner.name} takes cards!"
 	else
-		deck.return_card(first_player_card)
-		deck.return_card(second_player_card)
+		first_player.hand.add_cards(first_player_card)
+		second_player.hand.add_cards(second_player_card)
 		deck.shuffle!
-		puts "Deck is shuffled!"
+		puts "Cards are given to Players! Deck is shuffled!"
 	end
 end
 
-if first_player.hand.get_points > second_player.hand.get_points
-	puts "#{first_player.name} wins the game with #{first_player.hand.get_points} points"
-	puts "#{second_player.name} loses the game with #{second_player.hand.get_points} points"
+game_winner = if first_player.hand.get_points > second_player.hand.get_points
+	first_player
 elsif first_player.hand.get_points < second_player.hand.get_points
-	puts "#{second_player.name} wins the game with #{second_player.hand.get_points} points"
-	puts "#{first_player.name} loses the game with #{first_player.hand.get_points} points"
+	second_player
+end
+
+if game_winner
+	puts "#{game_winner.name} wins the game with #{game_winner.hand.get_points} points"
 else
 	puts "Draw!"
-	puts "#{first_player.name} has #{first_player.hand.get_points} points"
-	puts "#{second_player.name} has #{second_player.hand.get_points} points"
+	puts "Both players have #{first_player.hand.get_points} points"
 end
