@@ -1,47 +1,84 @@
 require 'rest-client'
 require 'json'
 
-api_url = 'https://jsonmonk.com/api/v1'
+base_url = 'https://jsonplaceholder.typicode.com/'
 
-#get list of users
-response = RestClient.get(api_url + '/users').body
+### Problem 1
+# Print the emails of first 5 users from `/users`.
+n = 5
 
-#parse JSON to hash
-users_list_hash = JSON.parse(response)
+response = RestClient.get(base_url + 'users')
+users = JSON.parse(response)
 
-#get first user from list
-first_user_id = users_list_hash['data']['records'].first['_id']
+n.times do |i|
+	puts "Email of user #{i + 1}: #{users[i]['email']}"
+end
 
-#get first user information from API
-response = RestClient.get(api_url + '/users/' + first_user_id).body
-first_user = JSON.parse(response)
+### Problem 2
+# Pick a random number `n` from 1 to 7(not hardcoded one). 
+# Print all posts titles of the user with ID `n` from `/users/[n]/posts`.
 
-puts "First user info"
-puts "First name: #{first_user['data']['first_name']}"
-puts "Last name: #{first_user['data']['last_name']}"
+n = rand(1..7)
+
+response = RestClient.get(base_url + 'users/' + n.to_s + '/posts')
+posts = JSON.parse(response)
+
+puts "------- Post Titles 1 BEGIN--------"
+posts.each do |post|
+	puts post['title']
+end
+puts "------- Post Titles 1 END--------"
+
+### Problem 3
+#It's the same as above, but use `/posts?userId=[n]` endpoint.
+n = rand(1..7)
+
+response = RestClient.get(base_url + 'posts?userId=' + n.to_s)
+posts = JSON.parse(response)
+
+puts "------- Post Titles 2 BEGIN--------"
+posts.each do |post|
+	puts post['title']
+end
+puts "------- Post Titles 2 END--------"
 
 
-#new user info
-new_user = {
-	first_name: "John",
-	last_name: "Smith",
-	email: "j124437@test.test",
-	mobile_no: "5559998877",
-	password: "qweasd123"
+### Problem 4
+# Pick a random number `n` from 4 to 10 (not hardcoded one). 
+# Try to update name the user with ID `n`. 
+# Print the response in the form:
+n = rand(4..10)
+
+body = {
+	name: 'Daniel'
 }
 
-#create new user
-response = RestClient.post(api_url + '/users', new_user) 
-response_hash = JSON.parse(response)
-new_user_id = response_hash['data']['_id']
-puts "Create result: #{response_hash['message']}"
+response = RestClient.put(base_url + 'users/' + n.to_s, body)
+new_name = JSON.parse(response)['name']
 
-#get info about created user
-response = RestClient.get(api_url + '/users/' + new_user_id)
-existing_user = JSON.parse(response)
-existing_user_id = existing_user['data']['_id']
+puts "```"
+puts "New name: #{new_name}"
+puts "```"
 
-#delete created user
-response = RestClient.delete(api_url + '/users/' + existing_user_id)
-response_hash = JSON.parse(response)
-puts "Delete result: #{response_hash['message']}"
+### Problem 5
+# Pick a random number `n` from 12 to 25 (not hardcoded one). 
+# Try to delete the post with ID `n`.
+n = rand(12..25)
+
+response = RestClient.delete(base_url + 'posts/' + n.to_s)
+
+### Problem 6
+# Print `name` of users that have written first 20 posts. 
+# Use `/posts` to get the collection of posts.
+# _Hint: you may need to make some additional requests to other endpoints._
+n = 20
+
+response = RestClient.get(base_url + 'posts')
+posts = JSON.parse(response)
+
+n.times do |i|
+	user_id = posts[i]['userId']
+	response = RestClient.get(base_url + 'users/' + user_id.to_s)
+	user_name = JSON.parse(response)['name']
+ 	puts "Post #{i + 1} was writeen by #{user_name}"
+end
